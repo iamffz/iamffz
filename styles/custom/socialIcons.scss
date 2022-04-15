@@ -1,0 +1,26 @@
+.social-icons-container {
+  @apply flex flex-row justify-center;
+
+  a {
+    @apply flex justify-center w-9 h-9 mx-2 text-lg rounded-full items-center shadow-md bg-transparent border border-black;
+
+    &:hover {
+      @apply text-white;
+
+      &.icon-facebook {
+        color: #3b5998;
+        border-color: #3b5998;
+      }
+
+      &.icon-instagram {
+        color: #3f729b;
+        border-color: #3f729b;
+      }
+
+      &.icon-github {
+        color: #00405d;
+        border-color: #00405d;
+      }
+    }
+  }
+}
