@@ -9,7 +9,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-    
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -41,6 +41,9 @@ jobs:
           # The full string SSH key
           SSH_KEY: ${{ secrets.SSH_KEY }}
         
-        script: |
-          cd /deployment/iamffz.me/front/
-          ./build.app.sh
+      - name: CD to Folder
+        run: cd /deployment/iamffz.me/front/
+        
+      - name: Deploy app
+        run: ./build.app.sh
+        
