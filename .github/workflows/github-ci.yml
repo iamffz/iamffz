@@ -1,4 +1,4 @@
-name: ci
+name: Build and Deploy
 
 on:
   push:
@@ -32,6 +32,10 @@ jobs:
           push: true
           file: ./Dockerfile
           tags: ${{ secrets.DOCKER_HUB_IMAGE }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
 
       - name: SSH Action
         # You may pin to the exact commit or the version.
