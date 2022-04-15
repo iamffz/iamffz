@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  build:
     runs-on: ubuntu-latest
     steps:
 
@@ -46,7 +46,7 @@ jobs:
           SSH_KEY: ${{ secrets.SSH_KEY }}
         
       - name: CD to Folder
-        run: cd /deployment/iamffz.me/front/
+        run: cd /deployment/front/
         
       - name: Deploy app
         run: ./build.app.sh
