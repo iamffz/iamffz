@@ -6,7 +6,7 @@ const HomePage: NextPage = () => {
   return (
     <>
       <PageLayout hideHeader={true}>
-        <div className="h-screen grid items-center">
+        <div className="h-vh grid items-center">
           <ProfileCard />
         </div>
       </PageLayout>
