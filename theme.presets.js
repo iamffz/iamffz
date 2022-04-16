@@ -17,6 +17,9 @@ module.exports = {
       },
       gridTemplateRows: {
         'layout': 'auto minmax(900px, 1fr) auto',
+      },
+      height: {
+        'vh': 'calc(var(--vh, 1vh) * 100)',
       }
     },
   },
