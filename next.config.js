@@ -5,7 +5,15 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     outputStandalone: true,
-  }
+  },
+  webpack: (config, {
+    isServer
+  }) => {
+    if (isServer) {
+      require("./scripts/sitemap-generator");
+    }
+    return config;
+  },
 }
 
 module.exports = nextConfig

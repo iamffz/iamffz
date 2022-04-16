@@ -30,6 +30,6 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "postcss.config.js", "tailwind.config.js", "theme.presets.js"
+    "**/*.tsx", "postcss.config.js", "tailwind.config.js", "theme.presets.js", "scripts/sitemap-generator"
   ]
 }
