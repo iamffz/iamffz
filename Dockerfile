@@ -8,11 +8,17 @@ RUN yarn install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM node:16-alpine AS builder
+
+ARG DOCKER_ENV
+ENV ENV DOCKER_ENV
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN yarn build
+RUN yarn build:$DOCKER_ENV && \
+    rm .env && \
+    cp .env.$DOCKER_ENV .env
 
 # Production image, copy all the files and run next
 FROM node:16-alpine AS runner

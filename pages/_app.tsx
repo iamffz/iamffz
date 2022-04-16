@@ -1,7 +1,9 @@
+import { useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 
+import * as gtag from "../lib/gtag";
 import NProgress from 'nprogress' //nprogress module
 import 'nprogress/nprogress.css' //styles of nprogress
 
@@ -11,12 +13,26 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../styles/custom/antd.custom.scss'
 import '../styles/custom/socialIcons.scss'
 import '../styles/globals.css'
-import { useEffect } from 'react'
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter()
+
   Router.events.on('routeChangeStart', () => NProgress.start())
   Router.events.on('routeChangeComplete', () => NProgress.done())
   Router.events.on('routeChangeError', () => NProgress.done())
+
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      /* invoke analytics function only for production */
+      if (isProduction) gtag.pageview(url)
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 
   const calculateVh = () => {
     let vh = window.innerHeight * 0.01
@@ -26,13 +42,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     // Initial calculation
     calculateVh()
-
     // Re-calculate on resize
     window.addEventListener('resize', calculateVh)
-
     // Re-calculate on device orientation change
     window.addEventListener('orientationchange', calculateVh)
-
     document.addEventListener('gesturestart', function (e) {
       e.preventDefault()
     })
