@@ -14,7 +14,7 @@ const PageLayout = ({ children, hideHeader = false, hideFooter = false }: IProps
   return (
     <>
       <ConfigProvider>
-        <Layout className={`bg-transparent min-h-screen grid grid-rows-layout`}>
+        <Layout className={`bg-transparent grid grid-rows-layout`}>
           {!hideHeader && <Header />}
           <Content>{children}</Content>
           {!hideFooter && <Footer />}

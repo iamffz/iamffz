@@ -10,7 +10,7 @@ const Document = () => {
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
       </Head>
-      <body className="bg-body bg-cover bg-center bg-no-repeat p-0 m-0 h-full overflow-hidden">
+      <body className="bg-body bg-cover bg-center bg-no-repeat p-0 m-0 overflow-hidden">
         <Main />
         <NextScript />
       </body>
