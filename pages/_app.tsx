@@ -11,11 +11,22 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../styles/custom/antd.custom.scss'
 import '../styles/custom/socialIcons.scss'
 import '../styles/globals.css'
+import { useEffect } from 'react'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   Router.events.on('routeChangeStart', () => NProgress.start())
   Router.events.on('routeChangeComplete', () => NProgress.done())
   Router.events.on('routeChangeError', () => NProgress.done())
+
+  const appHeight = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--vh', window.innerHeight * 0.01 + 'px')
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', appHeight)
+    appHeight()
+  }, [])
 
   return (
     <>
