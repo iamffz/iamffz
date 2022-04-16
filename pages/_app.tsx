@@ -32,13 +32,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
     // Re-calculate on device orientation change
     window.addEventListener('orientationchange', calculateVh)
+
+    document.addEventListener('gesturestart', function (e) {
+      e.preventDefault()
+    })
+    document.addEventListener('gesturechange', function (e) {
+      e.preventDefault()
+    })
+    document.addEventListener('gestureend', function (e) {
+      e.preventDefault()
+    })
   }, [])
 
   return (
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
